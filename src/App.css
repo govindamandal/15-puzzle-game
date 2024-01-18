@@ -1,38 +1,82 @@
+:root {
+  --size: 100px;
+  --tile: #342956;
+  --correct: #6e50b4;
+}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+html,
+body {
+  background-color: #64bdb0;
+  margin: 0;
+  padding: 0;
+}
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  font-family: 'Pacifco', cursive;
+}
+.App * {
+  font-family: 'Pacifco', cursive;
+}
+.overlay {
+  border: 10px solid #55ab9f;
+  pointer-events: none;
+  z-index: 20;
+}
+.game {
+  position: relative;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, var(--size));
+  grid-template-rows: repeat(4, var(--size));
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  border: 10px solid #55ab9f;
+}
+
+.number {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: var(--tile);
   color: white;
+  font-size: 50px;
+  cursor: pointer;
 }
+/* First Row */
+.number.slot--0 { left: 0; top: 0; }
+.number.slot--1 { left: calc(var(--size)); top: 0; }
+.number.slot--2 { left: calc(2 * var(--size)); top: 0; }
+.number.slot--3 { left: calc(3 * var(--size)); top: 0; }
 
-.App-link {
-  color: #61dafb;
-}
+/* Second Row */
+.number.slot--4 { left: 0; top: calc(var(--size)); }
+.number.slot--5 { left: calc(var(--size)); top: calc(var(--size)); }
+.number.slot--6 { left: calc(2 * var(--size)); top: calc(var(--size)); }
+.number.slot--7 { left: calc(3 * var(--size)); top: calc(var(--size)); }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Third Row */
+.number.slot--8 { left: 0; top: calc(2 * var(--size)); }
+.number.slot--9 { left: calc(var(--size)); top: calc(2 * var(--size)); }
+.number.slot--10 { left: calc(2 * var(--size)); top: calc(2 * var(--size)); }
+.number.slot--11 { left: calc(3 * var(--size)); top: calc(2 * var(--size)); }
+
+/* Forth Row */
+.number.slot--12 { left: 0; top: calc(3 * var(--size)); }
+.number.slot--13 { left: calc(var(--size)); top: calc(3 * var(--size)); }
+.number.slot--14 { left: calc(2 * var(--size)); top: calc(3 * var(--size)); }
+.number.slot--15 { left: calc(3 * var(--size)); top: calc(3 * var(--size)); }
+
+.number.disabled {
+  pointer-events: none;
+  background-color: transparent;
 }
