@@ -17,7 +17,7 @@ function Board() {
 
   const moveTile = tile => {
     const i16 = numbers.find(n => n.value === 16).index;
-    if (![i16 + 1, i16 - 1, i16 + 4, i16 -4].includes(tile.index)) {
+    if (![i16 + 1, i16 - 1, i16 + 4, i16 -4].includes(tile.index) || animating) {
       return;
     }
     const newNumbers = [...numbers].map(number => {
