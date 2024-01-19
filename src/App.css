@@ -51,7 +51,13 @@ body {
   color: white;
   font-size: 50px;
   cursor: pointer;
+  transition: left .4s, top .4s;
 }
+
+.number.correct {
+  background-color: var(--correct);
+}
+
 /* First Row */
 .number.slot--0 { left: 0; top: 0; }
 .number.slot--1 { left: calc(var(--size)); top: 0; }
@@ -79,4 +85,19 @@ body {
 .number.disabled {
   pointer-events: none;
   background-color: transparent;
+}
+
+.winner {
+  position: absolute;
+  background-color: var(--tile);
+  border-radius: 10px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 20;
 }
