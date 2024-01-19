@@ -1,8 +1,10 @@
 import React from 'react'
 
-function NewGame() {
+function NewGame({ reset }) {
   return (
-    <div>NewGame</div>
+    <div className="button-wrapper">
+        <button type='button' onClick={reset}>New Game</button>
+    </div>
   )
 }
 

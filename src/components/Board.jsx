@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Overlay from "./Overlay";
 import Tile from "./Tile";
 import Winner from "./Winner";
+import NewGame from "./NewGame";
 
 function Board() {
   const shuffle = () => {
@@ -55,15 +56,20 @@ function Board() {
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  })
+  });
+
+  const reset = () => {
+    setNumbers(shuffle());
+  }
 
   return (
     <div className="game">
       <div className="board">
         <Overlay />
         {numbers.map((x, i) => <Tile moveTile={moveTile} key={i} number={x} />)}
-        <Winner numbers={numbers} />
       </div>
+        <Winner numbers={numbers} reset={reset} />
+        <NewGame reset={reset} />
     </div>
   )
 }
